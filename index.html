@@ -166,10 +166,30 @@
             return diffDays <= 2;
         }
 
-        // Function to get last signal text
-        function getLastSignalText(lastSignal) {
+        // Function to get last signal text in human readable form
+        function getLastSignalText(lastSignal, lastSignalHuman) {
             if (!lastSignal) return "more than a year ago";
-            return formatDate(lastSignal);
+            if (lastSignalHuman) return lastSignalHuman;
+            
+            const now = new Date();
+            const signalDate = new Date(lastSignal);
+            const diffTime = Math.abs(now - signalDate);
+            
+            // Convert to appropriate time units
+            const diffMinutes = Math.floor(diffTime / (1000 * 60));
+            const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            const diffMonths = Math.floor(diffDays / 30);
+            
+            if (diffMinutes < 60) {
+                return `${diffMinutes} minute${diffMinutes !== 1 ? 's' : ''} ago`;
+            } else if (diffHours < 24) {
+                return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
+            } else if (diffDays < 30) {
+                return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+            } else {
+                return `${diffMonths} month${diffMonths !== 1 ? 's' : ''} ago`;
+            }
         }
 
         // Initialize map
@@ -228,7 +248,7 @@
                                 <div class="marker-popup">
                                     <h6>Station ID: ${station.id}</h6>
                                     <p>Name: ${station.name}</p>
-                                    <p>Last Signal: ${getLastSignalText(station.last_signal)}</p>
+                                    <p>Last Signal: ${getLastSignalText(station.last_signal, station.last_signal_human)}</p>
                                     <p>Status: <span style="color: ${isStationActive ? '#28a745' : '#dc3545'}; font-weight: bold;">
                                         ${isStationActive ? 'Active' : 'Inactive'}
                                     </span></p>
@@ -279,7 +299,7 @@
                         
                         // Last signal cell
                         const lastSignalCell = document.createElement('td');
-                        lastSignalCell.textContent = getLastSignalText(station.last_signal);
+                        lastSignalCell.textContent = getLastSignalText(station.last_signal, station.last_signal_human);
                         row.appendChild(lastSignalCell);
                         
                         // Status cell
