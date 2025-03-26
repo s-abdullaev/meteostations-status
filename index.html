@@ -184,7 +184,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             fetch('meteostations.json')
                 .then(response => response.json())
-                .then(data => {
+                .then(jsonData => {
+                    // Extract the stations array from the response
+                    const data = jsonData.data || [];
+                    
                     const tableBody = document.getElementById('stations-table');
                     let activeCount = 0;
                     let inactiveCount = 0;
