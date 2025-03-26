@@ -1,0 +1,6 @@
+Create a simple static html which takes data from meteostations.json and displays a dashboard including following details:
+- a table with station id, name, address, geolocation (link to Google Map), installation date in dd-MM-yyyy format, last signal (if null, say "more than a year ago"), status (if last signal is less than 2 days, active, otherwise inactive) highlighted with green/red colors. 
+- Google Map with pins displaying all stations on the map. When clicked on the pin, it should display following info on a popup balloon: station id, name, last signal. Active stations should be green, inactive stations should be red.
+- Some overall statistics about active and inactive stations.
+
+Make dashboard aesthetically pleasing. It is going to be deployed to github pages (github.io). Provide instructions on deploying this website there. 
