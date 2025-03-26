@@ -43,7 +43,7 @@ Follow these steps to deploy this dashboard to GitHub Pages:
 
 5. Add your GitHub repository as a remote
    ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   git remote add origin https://github.com/s-abdullaev/meteostations-status.git
    ```
 
 6. Push the files to GitHub
@@ -52,14 +52,14 @@ Follow these steps to deploy this dashboard to GitHub Pages:
    ```
 
 7. Configure GitHub Pages:
-   - Go to your repository on GitHub
+   - Go to your repository on GitHub: https://github.com/s-abdullaev/meteostations-status
    - Click on "Settings"
    - Scroll down to "Pages" section in the sidebar
    - Under "Source", select "Deploy from a branch"
    - Select the "main" branch and "/ (root)" folder
    - Click "Save"
    - Wait a few minutes for your site to be published
-   - Your site will be available at https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/
+   - Your site will be available at https://s-abdullaev.github.io/meteostations-status/
 
 ## Notes
 
