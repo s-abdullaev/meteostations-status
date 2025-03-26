@@ -23,7 +23,7 @@
             margin-bottom: 20px;
         }
         h1, h2 {
-            color: #0d6efd;
+            color: #000000;
         }
         .status-active {
             background-color: #d4edda;
@@ -92,19 +92,19 @@
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="stats-card active">
-                    <p>Active Stations</p>
+                    <p>🟢 Active Stations</p>
                     <p class="stats-number" id="active-count">0</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stats-card inactive">
-                    <p>Inactive Stations</p>
+                    <p>🔴 Inactive Stations</p>
                     <p class="stats-number" id="inactive-count">0</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stats-card total">
-                    <p>Total Stations</p>
+                    <p>📊 Total Stations</p>
                     <p class="stats-number" id="total-count">0</p>
                 </div>
             </div>
@@ -182,7 +182,7 @@
 
         // Load stations data
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('meteostations.json')
+            fetch('https://oxus.amudar.io/api/allMeteoDevices')
                 .then(response => response.json())
                 .then(jsonData => {
                     // Extract the stations array from the response
